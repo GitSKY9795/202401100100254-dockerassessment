@@ -64,7 +64,43 @@ The published `1.0.0` image is signed and verified with
 
 | Image | CRITICAL | HIGH | Size |
 |---|---:|---:|---:|
-| `fest-backend:0.1` | TODO | TODO | TODO |
-| `fest-backend:0.2` | TODO | TODO | TODO |
+| `fest-backend:0.1` | 234 | 2,243 | 1.61 GB |
+| `fest-backend:0.2` | 9 | 92 | 216 MB |
+
+The `fest-backend:0.2` full scan contains 9 CRITICAL findings. The
+`--ignore-unfixed` filtered report contains 0 CRITICAL findings in its final
+summary, but the required exit-code check returned `1` because 7 fixable
+CRITICAL findings were still present. The image must be rebuilt with a
+refreshed base image and rescanned before claiming the Stage 3 pass.
 
 **1.0.0 digest:** `sha256:573cb5f3a7b89aefcb127e78cc4dfcb0171cf0ffa9ab1f30d717c9fe94d337d0`
+
+## AI tools
+
+I used the AI assistant in VS Code with Copilot SDK to scaffold the Docker,
+Compose, application, scanning, and signing workflow, and to explain commands.
+Every command and result must be run and captured locally for assessment evidence.
+
+## Evidence checklist
+
+Capture the required whole-window screenshots in `screenshots/` using the
+assessment names: `S1-2.png`, `S1-3.png`, `S2-2.png`, `S2-3.png`,
+`S2-4.png`, `S3-1.png`, `S3-3.png`, `S4-1.png`, `S4-2.png`, `S4-3.png`,
+`S5-1.png`, `S5-2.png`, `S5-3.png`, and `S5-4.png`. Each terminal screenshot
+must show the prompt containing REGNO `202401100100254`.
+
+## Remaining assessment evidence
+
+- Add the whole-window terminal and Docker Hub screenshots listed above.
+- Rebuild `fest-backend:0.2` after the base-image security updates and rerun the
+  required CRITICAL check until it exits `0`.
+
+## Stage commit history
+
+The final Git history records the assessment stages in order:
+
+1. `Stage 1 done` - backend containerization
+2. `Stage 2 done` - Compose stack and network isolation
+3. `Stage 3 done` - Trivy reports and remediation work
+4. `Stage 4 done` - versioned Docker Hub images
+5. `Stage 5 done` - Cosign key and signature verification
