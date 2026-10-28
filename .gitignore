@@ -1,0 +1,29 @@
+# GitHub repository: local environment and secrets
+.env
+.env.*
+!.env.example
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+ENV/
+*.egg-info/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Docker and local tooling
+*.log
+.docker/
+docker-compose.override.yml
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

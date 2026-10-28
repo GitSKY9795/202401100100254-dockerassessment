@@ -1,0 +1,89 @@
+# FestPass Docker & Container Security Assessment
+
+## Personalisation
+
+| Field | Value |
+|---|---|
+| Name | SUMEET KUMAR YADAV |
+| REGNO | `202401100100254` |
+| PORT | `134` |
+| Docker Hub image | [dockskyadav/ca2-docker-assesment](https://hub.docker.com/r/dockskyadav/ca2-docker-assesment) |
+
+The port is `80 + the last two digits of REGNO`. Create a local `.env` from
+[.env.example](./.env.example); `.env` is intentionally ignored by Git.
+
+## Run the stack
+
+```bash
+cp .env.example .env
+docker compose pull
+docker compose up -d
+curl http://localhost:134/api/health
+```
+
+The frontend is on `frontend-backend`; only the backend is also on
+`backend-db`, so the frontend cannot resolve or reach the database. The
+`festpass-data` volume preserves registrations across restarts.
+
+## Build, scan, version, and sign
+
+```bash
+docker build -t fest-backend:0.1 backend
+docker run -d --name backend -p 134:5000 -e REGNO=202401100100254 fest-backend:0.1
+curl http://localhost:134/api/health
+docker logs backend
+docker rm -f backend
+
+trivy image fest-backend:0.1 | tee reports/trivy-before.txt
+docker build --build-arg APP_VERSION=dev -t fest-backend:0.2 backend
+trivy image --severity CRITICAL --ignore-unfixed --exit-code 1 fest-backend:0.2
+echo $?
+trivy image fest-backend:0.2 | tee reports/trivy-after.txt
+
+docker build --build-arg APP_VERSION=1.0.0 -t dockskyadav/ca2-docker-assesment:1.0.0 -t dockskyadav/ca2-docker-assesment:1.0 backend
+docker push dockskyadav/ca2-docker-assesment:1.0.0
+docker push dockskyadav/ca2-docker-assesment:1.0
+docker inspect --format='{{index .RepoDigests 0}}' dockskyadav/ca2-docker-assesment:1.0.0
+
+cosign generate-key-pair
+cosign sign --key cosign.key dockskyadav/ca2-docker-assesment@DIGEST
+cosign verify --key cosign.pub dockskyadav/ca2-docker-assesment@DIGEST
+docker build --build-arg APP_VERSION=1.0.1 -t dockskyadav/ca2-docker-assesment:1.0.1 backend
+docker push dockskyadav/ca2-docker-assesment:1.0.1
+cosign verify --key cosign.pub dockskyadav/ca2-docker-assesment:1.0.1
+```
+
+Replace `DIGEST` with the immutable `sha256` digest printed by the `1.0.0`
+push. Never commit `cosign.key` or `.env`.
+
+The published `1.0.0` image is signed and verified with
+[cosign.pub](./cosign.pub). The local stack is running at
+`http://localhost:134`.
+
+## Vulnerability results
+
+| Image | CRITICAL | HIGH | Size |
+|---|---:|---:|---:|
+| `fest-backend:0.1` | TODO | TODO | TODO |
+| `fest-backend:0.2` | TODO | TODO | TODO |
+
+**1.0.0 digest:** `sha256:573cb5f3a7b89aefcb127e78cc4dfcb0171cf0ffa9ab1f30d717c9fe94d337d0`
+
+## AI tools
+
+I used the AI assistant in VS Code with Copilot SDK to scaffold the Docker,
+Compose, application, scanning, and signing workflow, and to explain commands.
+Every command and result must be run and captured locally for assessment evidence.
+
+## Evidence checklist
+
+Capture the required whole-window screenshots in `screenshots/` using the
+assessment names: `S1-2.png`, `S1-3.png`, `S2-2.png`, `S2-3.png`,
+`S2-4.png`, `S3-1.png`, `S3-3.png`, `S4-1.png`, `S4-2.png`, `S4-3.png`,
+`S5-1.png`, `S5-2.png`, `S5-3.png`, and `S5-4.png`. Each terminal screenshot
+must show the prompt containing REGNO `202401100100254`.
+
+## Remaining assessment evidence
+
+- Add the whole-window terminal and Docker Hub screenshots listed above.
+- Fill in the Trivy before-and-after totals after scanning both local image versions.

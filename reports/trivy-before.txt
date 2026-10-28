@@ -1,0 +1,4 @@
+Assessment evidence placeholder.
+
+Run:
+trivy image fest-backend:0.1 | tee reports/trivy-before.txt
