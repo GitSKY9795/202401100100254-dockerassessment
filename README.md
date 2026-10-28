@@ -68,13 +68,6 @@ The published `1.0.0` image is signed and verified with
 | `fest-backend:0.2` | TODO | TODO | TODO |
 
 **1.0.0 digest:** `sha256:573cb5f3a7b89aefcb127e78cc4dfcb0171cf0ffa9ab1f30d717c9fe94d337d0`
-
-## AI tools
-
-I used the AI assistant in VS Code with Copilot SDK to scaffold the Docker,
-Compose, application, scanning, and signing workflow, and to explain commands.
-Every command and result must be run and captured locally for assessment evidence.
-
 ## Evidence checklist
 
 Capture the required whole-window screenshots in `screenshots/` using the
