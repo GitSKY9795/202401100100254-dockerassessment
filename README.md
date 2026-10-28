@@ -75,24 +75,6 @@ assessment scan evidence.
 
 **1.0.0 digest:** `sha256:573cb5f3a7b89aefcb127e78cc4dfcb0171cf0ffa9ab1f30d717c9fe94d337d0`
 
-## AI tools
-
-I used the AI assistant in VS Code with Copilot SDK to scaffold the Docker,
-Compose, application, scanning, and signing workflow, and to explain commands.
-Every command and result must be run and captured locally for assessment evidence.
-
-## Evidence checklist
-
-Capture the required whole-window screenshots in `screenshots/` using the
-assessment names: `S1-2.png`, `S1-3.png`, `S2-2.png`, `S2-3.png`,
-`S2-4.png`, `S3-1.png`, `S3-3.png`, `S4-1.png`, `S4-2.png`, `S4-3.png`,
-`S5-1.png`, `S5-2.png`, `S5-3.png`, and `S5-4.png`. Each terminal screenshot
-must show the prompt containing REGNO `202401100100254`.
-
-## Remaining assessment evidence
-
-- Add the whole-window terminal and Docker Hub screenshots listed above.
-
 ## Stage commit history
 
 The final Git history records the assessment stages in order:
