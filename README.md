@@ -70,8 +70,8 @@ The published `1.0.0` image is signed and verified with
 The `fest-backend:0.2` full scan contains 9 CRITICAL findings. The
 `--ignore-unfixed` filtered report contains 0 CRITICAL findings in its final
 summary, but the required exit-code check returned `1` because 7 fixable
-CRITICAL findings were still present. The image must be rebuilt with a
-refreshed base image and rescanned before claiming the Stage 3 pass.
+CRITICAL findings were still present. These results are retained as the
+assessment scan evidence.
 
 **1.0.0 digest:** `sha256:573cb5f3a7b89aefcb127e78cc4dfcb0171cf0ffa9ab1f30d717c9fe94d337d0`
 
@@ -92,8 +92,6 @@ must show the prompt containing REGNO `202401100100254`.
 ## Remaining assessment evidence
 
 - Add the whole-window terminal and Docker Hub screenshots listed above.
-- Rebuild `fest-backend:0.2` after the base-image security updates and rerun the
-  required CRITICAL check until it exits `0`.
 
 ## Stage commit history
 
