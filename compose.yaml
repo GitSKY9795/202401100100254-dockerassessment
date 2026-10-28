@@ -1,3 +1,4 @@
+# Stage 2: compose the three-tier stack.
 services:
   db:
     image: postgres:17-alpine
