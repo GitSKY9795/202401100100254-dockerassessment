@@ -1,3 +1,4 @@
+# Stage 5: keep signing keys and local secrets out of GitHub.
 # GitHub repository: local environment and secrets
 .env
 .env.*
