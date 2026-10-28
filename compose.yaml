@@ -50,3 +50,5 @@ volumes:
 networks:
   frontend-backend:
   backend-db:
+
+# Stage 4: publish the versioned registry image.
