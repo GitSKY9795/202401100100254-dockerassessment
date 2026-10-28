@@ -10,7 +10,11 @@ WORKDIR /app
 RUN groupadd --system app && useradd --system --gid app --home-dir /app app
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
 COPY app.py .
