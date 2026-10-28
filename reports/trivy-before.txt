@@ -1,13 +1,3 @@
-2026-10-28T10:16:48+05:30	INFO	[vuln] Vulnerability scanning is enabled
-2026-10-28T10:16:48+05:30	INFO	[secret] Secret scanning is enabled
-2026-10-28T10:16:48+05:30	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
-2026-10-28T10:16:48+05:30	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
-2026-10-28T10:16:48+05:30	INFO	Detected OS	family="debian" version="13.1"
-2026-10-28T10:16:48+05:30	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=469
-2026-10-28T10:16:49+05:30	INFO	Number of language-specific files	num=1
-2026-10-28T10:16:49+05:30	INFO	[python-pkg] Detecting vulnerabilities...
-2026-10-28T10:16:49+05:30	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
-2026-10-28T10:16:50+05:30	INFO	Table result includes only package filenames. Use '--format json' option to get the full path to the package file.
 
 Report Summary
 
@@ -16,11 +6,11 @@ Report Summary
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
 │ fest-backend:0.1 (debian 13.1)                                                   │   debian   │      13357      │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
-│ usr/local/lib/python3.9/site-packages/Flask-2.2.2.dist-info/METADATA             │ python-pkg │        2        │    -    │
-├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
-│ usr/local/lib/python3.9/site-packages/Werkzeug-2.2.2.dist-info/METADATA          │ python-pkg │       10        │    -    │
+│ usr/local/lib/python3.9/site-packages/blinker-1.9.0.dist-info/METADATA           │ python-pkg │        0        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
 │ usr/local/lib/python3.9/site-packages/click-8.1.8.dist-info/METADATA             │ python-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.9/site-packages/flask-3.1.2.dist-info/METADATA             │ python-pkg │        1        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
 │ usr/local/lib/python3.9/site-packages/importlib_metadata-8.7.1.dist-info/METADA- │ python-pkg │        0        │    -    │
 │ TA                                                                               │            │                 │         │
@@ -84,6 +74,8 @@ Report Summary
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
 │ usr/local/lib/python3.9/site-packages/setuptools/_vendor/zipp-3.19.2.dist-info/- │ python-pkg │        0        │    -    │
 │ METADATA                                                                         │            │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+│ usr/local/lib/python3.9/site-packages/werkzeug-3.1.3.dist-info/METADATA          │ python-pkg │        4        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
 │ usr/local/lib/python3.9/site-packages/wheel-0.45.1.dist-info/METADATA            │ python-pkg │        1        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
@@ -51502,40 +51494,16 @@ Total: 13357 (UNKNOWN: 158, LOW: 3206, MEDIUM: 7516, HIGH: 2243, CRITICAL: 234)
 
 Python (python-pkg)
 ===================
-Total: 24 (UNKNOWN: 0, LOW: 4, MEDIUM: 14, HIGH: 6, CRITICAL: 0)
+Total: 17 (UNKNOWN: 0, LOW: 3, MEDIUM: 11, HIGH: 3, CRITICAL: 0)
 
 ┌───────────────────────────┬─────────────────────┬──────────┬────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
 │          Library          │    Vulnerability    │ Severity │ Status │ Installed Version │ Fixed Version │                            Title                             │
 ├───────────────────────────┼─────────────────────┼──────────┼────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
-│ Flask (METADATA)          │ CVE-2023-30861      │ HIGH     │ fixed  │ 2.2.2             │ 2.3.2, 2.2.5  │ flask: Possible disclosure of permanent session cookie due   │
-│                           │                     │          │        │                   │               │ to missing Vary: Cookie...                                   │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-30861                   │
-│                           ├─────────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2026-27205      │ LOW      │        │                   │ 3.1.3         │ flask: Flask: Information disclosure via improper caching of │
+│ Flask (METADATA)          │ CVE-2026-27205      │ LOW      │ fixed  │ 3.1.2             │ 3.1.3         │ flask: Flask: Information disclosure via improper caching of │
 │                           │                     │          │        │                   │               │ session data                                                 │
 │                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-27205                   │
-├───────────────────────────┼─────────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│ Werkzeug (METADATA)       │ CVE-2023-25577      │ HIGH     │        │                   │ 2.2.3         │ python-werkzeug: high resource usage when parsing multipart  │
-│                           │                     │          │        │                   │               │ form data with many fields...                                │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-25577                   │
-│                           ├─────────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2024-34069      │          │        │                   │ 3.0.3         │ python-werkzeug: user may execute code on a developer's      │
-│                           │                     │          │        │                   │               │ machine                                                      │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-34069                   │
-│                           ├─────────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2023-46136      │ MEDIUM   │        │                   │ 3.0.1, 2.3.8  │ python-werkzeug: high resource consumption leading to denial │
-│                           │                     │          │        │                   │               │ of service                                                   │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-46136                   │
-│                           ├─────────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2024-49766      │          │        │                   │ 3.0.6         │ werkzeug: python-werkzeug: Werkzeug safe_join not safe on    │
-│                           │                     │          │        │                   │               │ Windows                                                      │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-49766                   │
-│                           ├─────────────────────┤          │        │                   │               ├──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2024-49767      │          │        │                   │               │ werkzeug: python-werkzeug: Werkzeug possible resource        │
-│                           │                     │          │        │                   │               │ exhaustion when parsing file data in forms...                │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-49767                   │
-│                           ├─────────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2025-66221      │          │        │                   │ 3.1.4         │ Werkzeug: Werkzeug: Denial of service via Windows device     │
+├───────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ Werkzeug (METADATA)       │ CVE-2025-66221      │ MEDIUM   │        │ 3.1.3             │ 3.1.4         │ Werkzeug: Werkzeug: Denial of service via Windows device     │
 │                           │                     │          │        │                   │               │ names in path segments...                                    │
 │                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2025-66221                   │
 │                           ├─────────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
@@ -51549,10 +51517,6 @@ Total: 24 (UNKNOWN: 0, LOW: 4, MEDIUM: 14, HIGH: 6, CRITICAL: 0)
 │                           ├─────────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
 │                           │ CVE-2026-27199      │          │        │                   │ 3.1.6         │ Werkzeug safe_join() allows Windows special device names     │
 │                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-27199                   │
-│                           ├─────────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
-│                           │ CVE-2023-23934      │ LOW      │        │                   │ 2.2.3         │ python-werkzeug: cookie prefixed with = can shadow           │
-│                           │                     │          │        │                   │               │ unprefixed cookie                                            │
-│                           │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-23934                   │
 ├───────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
 │ jaraco.context (METADATA) │ CVE-2026-23949      │ HIGH     │        │ 5.3.0             │ 6.1.0         │ jaraco.context: jaraco.context: Path traversal via malicious │
 │                           │                     │          │        │                   │               │ tar archives                                                 │
