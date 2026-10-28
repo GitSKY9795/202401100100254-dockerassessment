@@ -1,3 +1,4 @@
+# Stage 1: containerise the backend.
 FROM python:3.13.9-slim-bookworm
 
 ARG APP_VERSION=dev
