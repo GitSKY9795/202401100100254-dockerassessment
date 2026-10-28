@@ -68,15 +68,3 @@ The published `1.0.0` image is signed and verified with
 | `fest-backend:0.2` | TODO | TODO | TODO |
 
 **1.0.0 digest:** `sha256:573cb5f3a7b89aefcb127e78cc4dfcb0171cf0ffa9ab1f30d717c9fe94d337d0`
-## Evidence checklist
-
-Capture the required whole-window screenshots in `screenshots/` using the
-assessment names: `S1-2.png`, `S1-3.png`, `S2-2.png`, `S2-3.png`,
-`S2-4.png`, `S3-1.png`, `S3-3.png`, `S4-1.png`, `S4-2.png`, `S4-3.png`,
-`S5-1.png`, `S5-2.png`, `S5-3.png`, and `S5-4.png`. Each terminal screenshot
-must show the prompt containing REGNO `202401100100254`.
-
-## Remaining assessment evidence
-
-- Add the whole-window terminal and Docker Hub screenshots listed above.
-- Fill in the Trivy before-and-after totals after scanning both local image versions.
